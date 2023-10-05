@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Belajar Firebase</title>
+</head>
+<body>
+    <h1>Kenapa ga muncul consolenya </h1>
+
+    <script type="module">
+        // Import the functions you need from the SDKs you need
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.4.0/firebase-app.js";
+        import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.4.0/firebase-analytics.js";
+        import { getDatabase, ref, onValue } from "https://www.gstatic.com/firebasejs/10.4.0/firebase-database.js";
+        
+        // TODO: Add SDKs for Firebase products that you want to use
+        // https://firebase.google.com/docs/web/setup#available-libraries
+        // Your web app's Firebase configuration
+        // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+        const firebaseConfig = {
+            apiKey: "AIzaSyBopesf1yC5BUmYOjF0FnWe3tfWwLzGdy8",
+            authDomain: "dicoding-1-8dcb8.firebaseapp.com",
+            databaseURL: "https://dicoding-1-8dcb8-default-rtdb.asia-southeast1.firebasedatabase.app",
+            projectId: "dicoding-1-8dcb8",
+            storageBucket: "dicoding-1-8dcb8.appspot.com",
+            messagingSenderId: "673688133298",
+            appId: "1:673688133298:web:dac078a2eedeedc88fb3ab",
+            measurementId: "G-M6SML57Y0C"
+        };
+        // Initialize Firebase
+        const app = initializeApp(firebaseConfig);
+        const analytics = getAnalytics(app);
+
+        // Initialize Realtime Database and get a reference to the service
+        // const database = getDatabase();
+        const db = getDatabase(); 
+        const players1 = ref(db, 'players') ; 
+        onValue(players1, showData) ; 
+        function showData(data) {
+            console.log(data.val()) ; 
+        }
+
+        function showError(err) {
+            console.log(err) ; 
+        }
+    </script>
+</body>
+</html>
